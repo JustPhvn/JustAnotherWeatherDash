@@ -11,7 +11,7 @@ $("#searchBtn").on("click", function() {
 $("#btnList").on("click", "button", function() {
   clearFields();
   localStorage.setItem("lastSearched", JSON.stringify(this.innerHTML));
-  console.log(this.innerHTML);
+  // console.log(this.innerHTML);
   var currentWeatherURL =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     this.innerHTML +
@@ -20,7 +20,7 @@ $("#btnList").on("click", "button", function() {
     "http://api.openweathermap.org/data/2.5/forecast?q=" +
     this.innerHTML +
     "&appid=3a9affb571f01ec6f04a55e3f54b8056&units=imperial";
-  console.log(currentWeatherURL);
+  // console.log(currentWeatherURL);
   $.ajax({
     url: currentWeatherURL,
     method: "GET"
@@ -53,7 +53,7 @@ $("#btnList").on("click", "button", function() {
       url: uvURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       let uv = $("<p>").text("UV Index: " + response.value);
       if (response.value < 3) {
         uv.attr("class", "weatherStats favorableUV");
@@ -69,7 +69,7 @@ $("#btnList").on("click", "button", function() {
       method: "GET"
     }).then(function(response) {
       console.log(response);
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 37; i += 9) {
         let icon =
           "http://openweathermap.org/img/w/" +
           response.list[i].weather[0].icon +
@@ -86,7 +86,7 @@ $("#btnList").on("click", "button", function() {
           .attr("class", "card-title")
           .text(
             moment()
-              .add(i + 1, "days")
+              .add(+1, "days")
               .format("L")
           );
         let cardTemp = $("<p>")
@@ -116,7 +116,7 @@ function weather() {
 
   cityBtns.push(city);
 
-  console.log(cityBtns);
+  // console.log(cityBtns);
   localStorage.setItem("city", JSON.stringify(cityBtns));
   $(".btn-group-vertical").append(
     $("<button>")
@@ -134,7 +134,7 @@ function weather() {
     city +
     "&appid=3a9affb571f01ec6f04a55e3f54b8056&units=imperial";
 
-  console.log(currentWeatherURL);
+  // console.log(currentWeatherURL);
 
   $.ajax({
     url: currentWeatherURL,
@@ -143,7 +143,7 @@ function weather() {
     let icon =
       "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
     let iconLink = $("<img>").attr("src", icon);
-    console.log(response);
+    // console.log(response);
     longitude = response.coord.lon;
     latitude = response.coord.lat;
 
@@ -170,7 +170,7 @@ function weather() {
       url: uvURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       let uv = $("<p>").text("UV Index: " + response.value);
       if (response.value < 3) {
         uv.attr("class", "weatherStats favorableUV");
@@ -186,7 +186,7 @@ function weather() {
       url: forecastURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       for (let i = 0; i < 5; i++) {
         let icon =
           "http://openweathermap.org/img/w/" +
@@ -257,7 +257,7 @@ if (localStorage.getItem("lastSearched") !== null) {
     lastCity +
     "&appid=3a9affb571f01ec6f04a55e3f54b8056&units=imperial";
 
-  console.log(currentWeatherURL);
+  // console.log(currentWeatherURL);
 
   $.ajax({
     url: currentWeatherURL,
@@ -266,7 +266,7 @@ if (localStorage.getItem("lastSearched") !== null) {
     let icon =
       "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
     let iconLink = $("<img>").attr("src", icon);
-    console.log(response);
+    // console.log(response);
     longitude = response.coord.lon;
     latitude = response.coord.lat;
 
@@ -293,7 +293,7 @@ if (localStorage.getItem("lastSearched") !== null) {
       url: uvURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       let uv = $("<p>").text("UV Index: " + response.value);
       if (response.value < 3) {
         uv.attr("class", "weatherStats favorableUV");
@@ -309,7 +309,7 @@ if (localStorage.getItem("lastSearched") !== null) {
       url: forecastURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       for (let i = 0; i < 5; i++) {
         let icon =
           "http://openweathermap.org/img/w/" +
