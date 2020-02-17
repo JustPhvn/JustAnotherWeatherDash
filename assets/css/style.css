@@ -1,0 +1,12 @@
+.weatherStats {
+  font-size: 20px;
+}
+.favorableUV {
+  background-color: greenyellow;
+}
+.moderateUY {
+  background-color: orange;
+}
+.severeUV {
+  background-color: red;
+}
